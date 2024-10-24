@@ -38,31 +38,21 @@ setTimeout(clearInput, 3000);
 //alert("Inserisci i numeri che hai visto sullo schermo");
 
 confirmButton.addEventListener("click", () => {
-	if (firstNumber.value === firstRandom.toString()) {
-		alert("il primo numero è corretto");
-	} else {
-		alert("il primo numero è sbagliato");
-	}
-	if (secondNumber.value === secondRandom.toString()) {
-		alert("il secondo numero è corretto");
-	} else {
-		alert("il secondo numero è sbagliato");
-	}
-	if (thirdNumber.value === thirdRandom.toString()) {
-		alert("il terzo numero è corretto");
-	} else {
-		alert("il terzo numero è sbagliato");
-	}
-	if (fourthNumber.value === fourthRandom.toString()) {
-		alert("il quarto numero è corretto");
-	} else {
-		alert("il quarto numero è sbagliato");
-	}
-	if (fifthNumber.value === fifthRandom.toString()) {
-		alert("il quinto numero è corretto");
-	} else {
-		alert("il quinto numero è sbagliato");
-	}
+	const results = [
+		firstNumber.value === firstRandom.toString(),
+		secondNumber.value === secondRandom.toString(),
+		thirdNumber.value === thirdRandom.toString(),
+		fourthNumber.value === fourthRandom.toString(),
+		fifthNumber.value === fifthRandom.toString(),
+	];
+
+	results.forEach((result, index) => {
+		if (result) {
+			alert(`Il numero ${index + 1} è corretto`);
+		} else {
+			alert(`Il numero ${index + 1} è sbagliato`);
+		}
+	});
 });
 
 console.log(
