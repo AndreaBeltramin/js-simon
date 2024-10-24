@@ -4,17 +4,11 @@ let thirdNumber = document.getElementById("third-number");
 let fourthNumber = document.getElementById("fourth-number");
 let fifthNumber = document.getElementById("fifth-number");
 
-let randomNumber = 0;
-for (let i = 1; i <= 5; i++) {
-	randomNumber = parseInt(Math.floor(Math.random() * 100));
-	console.log(randomNumber);
-}
-
-firstNumber.setAttribute("value", randomNumber);
-secondNumber.setAttribute("value", randomNumber);
-thirdNumber.setAttribute("value", randomNumber);
-fourthNumber.setAttribute("value", randomNumber);
-fifthNumber.setAttribute("value", randomNumber);
+firstNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
+secondNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
+thirdNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
+fourthNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
+fifthNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
 
 if (firstNumber.value === secondNumber.value) {
 	randomNumber = parseInt(Math.floor(Math.random() * 100));
