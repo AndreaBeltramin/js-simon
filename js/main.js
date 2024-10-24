@@ -11,14 +11,15 @@ fourthNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
 fifthNumber.setAttribute("value", parseInt(Math.floor(Math.random() * 100)));
 
 if (firstNumber.value === secondNumber.value) {
-	randomNumber = parseInt(Math.floor(Math.random() * 100));
+	parseInt(Math.floor(Math.random() * 100));
 }
 
-if (randomNumber)
-	console.log(
-		firstNumber,
-		secondNumber,
-		thirdNumber,
-		fourthNumber,
-		fifthNumber
-	);
+setTimeout(clearInput, 3000);
+
+function clearInput() {
+	firstNumber.setAttribute("value", "");
+	secondNumber.setAttribute("value", "");
+	thirdNumber.setAttribute("value", "");
+	fourthNumber.setAttribute("value", "");
+	fifthNumber.setAttribute("value", "");
+}
