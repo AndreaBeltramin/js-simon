@@ -5,33 +5,25 @@ const fourthNumber = document.getElementById("fourth-number");
 const fifthNumber = document.getElementById("fifth-number");
 const confirmButton = document.getElementById("confirm-button");
 
-console.log(
-	firstNumber.value,
-	secondNumber.value,
-	thirdNumber.value,
-	fourthNumber.value,
-	fifthNumber.value
-);
-
 const firstRandom = firstNumber.setAttribute(
 	"value",
-	parseInt(Math.floor(Math.random() * 100))
+	parseInt(Math.round(Math.random() * 100))
 );
 const secondRandom = secondNumber.setAttribute(
 	"value",
-	parseInt(Math.floor(Math.random() * 100))
+	parseInt(Math.round(Math.random() * 100))
 );
 const thirdRandom = thirdNumber.setAttribute(
 	"value",
-	parseInt(Math.floor(Math.random() * 100))
+	parseInt(Math.round(Math.random() * 100))
 );
 const fourthRandom = fourthNumber.setAttribute(
 	"value",
-	parseInt(Math.floor(Math.random() * 100))
+	parseInt(Math.round(Math.random() * 100))
 );
 const fifthRandom = fifthNumber.setAttribute(
 	"value",
-	parseInt(Math.floor(Math.random() * 100))
+	parseInt(Math.round(Math.random() * 100))
 );
 
 //if (firstNumber.value === secondNumber.value) {
