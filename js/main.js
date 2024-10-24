@@ -1,3 +1,5 @@
+//prendo tutti gli id dei numeri dalll'html e li metto in un array
+
 const firstNumber = document.getElementById("first-number");
 const secondNumber = document.getElementById("second-number");
 const thirdNumber = document.getElementById("third-number");
@@ -5,25 +7,44 @@ const fourthNumber = document.getElementById("fourth-number");
 const fifthNumber = document.getElementById("fifth-number");
 const confirmButton = document.getElementById("confirm-button");
 
-//creo i numeri random
-const firstRandom = Math.floor(Math.random() * 100);
-const secondRandom = Math.floor(Math.random() * 100);
-const thirdRandom = Math.floor(Math.random() * 100);
-const fourthRandom = Math.floor(Math.random() * 100);
-const fifthRandom = Math.floor(Math.random() * 100);
+const inputsNumber = [
+	firstNumber,
+	secondNumber,
+	thirdNumber,
+	fourthNumber,
+	fifthNumber,
+];
 
-//imposto i valori negli input in html
-firstNumber.value = firstRandom;
-secondNumber.value = secondRandom;
-thirdNumber.value = thirdRandom;
-fourthNumber.value = fourthRandom;
-fifthNumber.value = fifthRandom;
+//creo i numeri random e li metto in un array
+const firstRandomNumber = Math.floor(Math.random() * 100);
+const secondRandomNumber = Math.floor(Math.random() * 100);
+const thirdRandomNumber = Math.floor(Math.random() * 100);
+const fourthRandomNumber = Math.floor(Math.random() * 100);
+const fifthRandomNumber = Math.floor(Math.random() * 100);
+
+const randomEl = [
+	firstRandomNumber,
+	secondRandomNumber,
+	thirdRandomNumber,
+	fourthRandomNumber,
+	fifthRandomNumber,
+];
+
+//imposto i valori random negli input in html
+firstNumber.value = firstRandomNumber;
+secondNumber.value = secondRandomNumber;
+thirdNumber.value = thirdRandomNumber;
+fourthNumber.value = fourthRandomNumber;
+fifthNumber.value = fifthRandomNumber;
 
 //if (firstNumber.value === secondNumber.value) {
 //	parseInt(Math.floor(Math.random() * 100));
 //}
 
-//funzione per cancellare gli input random
+//setto un timeout per far scomparire gli imput dopo tot tempo
+setTimeout(clearInput, 3000);
+
+//creo funzione per cancellare gli input random
 function clearInput() {
 	firstNumber.value = "";
 	secondNumber.value = "";
@@ -32,27 +53,28 @@ function clearInput() {
 	fifthNumber.value = "";
 }
 
-//setto un timeout per far scomparire gli imput dopo tot tempo
-setTimeout(clearInput, 3000);
-
 //alert("Inserisci i numeri che hai visto sullo schermo");
 
+//creo un evento al click del bottone
+//al click devo convalidare i numeri inseriti dall'utente con i numeri random
 confirmButton.addEventListener("click", () => {
-	const results = [
-		firstNumber.value === firstRandom.toString(),
-		secondNumber.value === secondRandom.toString(),
-		thirdNumber.value === thirdRandom.toString(),
-		fourthNumber.value === fourthRandom.toString(),
-		fifthNumber.value === fifthRandom.toString(),
-	];
+	const correctNumbers = [];
+	let countCorrect = 0;
 
-	results.forEach((result, index) => {
-		if (result) {
-			alert(`Il numero ${index + 1} è corretto`);
-		} else {
-			alert(`Il numero ${index + 1} è sbagliato`);
+	//controllo per ogni numero scritto dall'utente
+	inputsNumber.forEach((input, index) => {
+		//se corrisponde scrivo
+		if (input.value === randomEl[index].toString()) {
+			countCorrect += 1;
+			correctNumbers.push(randomEl[index]);
 		}
 	});
+
+	//faccio comparire una scritta che dice quanti e quali numeri sono corretti
+	const checkNumeri = document.getElementById("check-numeri");
+	checkNumeri.innerHTML = `Hai indovinato ${countCorrect} numeri (${correctNumbers.join(
+		" , "
+	)})`;
 });
 
 console.log(
