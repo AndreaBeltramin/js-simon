@@ -6,15 +6,6 @@ const fourthNumber = document.getElementById("fourth-number");
 const fifthNumber = document.getElementById("fifth-number");
 const confirmButton = document.getElementById("confirm-button");
 
-//li metto in un array
-const inputsNumber = [
-	firstNumber,
-	secondNumber,
-	thirdNumber,
-	fourthNumber,
-	fifthNumber,
-];
-
 //creo i numeri random
 const firstRandomNumber = Math.floor(Math.random() * 100);
 const secondRandomNumber = Math.floor(Math.random() * 100);
@@ -33,41 +24,48 @@ const randomEl = [
 console.log(randomEl);
 
 //inserisco i valori random negli input in html
-firstNumber.value = firstRandomNumber;
-secondNumber.value = secondRandomNumber;
-thirdNumber.value = thirdRandomNumber;
-fourthNumber.value = fourthRandomNumber;
-fifthNumber.value = fifthRandomNumber;
+firstNumber.innerHTML = firstRandomNumber;
+secondNumber.innerHTML = secondRandomNumber;
+thirdNumber.innerHTML = thirdRandomNumber;
+fourthNumber.innerHTML = fourthRandomNumber;
+fifthNumber.innerHTML = fifthRandomNumber;
 
-//if (firstNumber.value === secondNumber.value) {
-//	parseInt(Math.floor(Math.random() * 100));
-//}
-
-//setto un timeout per far scomparire gli imput dell'html dopo tot tempo
-setTimeout(clearInput, 30000);
+//recupero le card dove sono i numeri dall'html
+const randomNumberCard = document.getElementById("randomNumberCard");
+const insertNumberCard = document.getElementById("insertNumberCard");
 
 //creo funzione per cancellare gli input random
 function clearInput() {
-	firstNumber.value = "";
-	secondNumber.value = "";
-	thirdNumber.value = "";
-	fourthNumber.value = "";
-	fifthNumber.value = "";
+	randomNumberCard.classList.add("d-none");
+	insertNumberCard.classList.remove("d-none");
 }
 
-//alert("Inserisci i numeri che hai visto sullo schermo");
+//setto un timeout per far scomparire gli imput dell'html dopo tot tempo
+setTimeout(clearInput, 3000);
 
 //creo un evento al click del bottone
 //al click devo convalidare i numeri inseriti dall'utente con i numeri random
+
 confirmButton.addEventListener("click", () => {
 	//dichiaro un array di numeri corretti e una variabile per un counter di numeri corretti
 	const correctNumbers = [];
 	let countCorrect = 0;
 
+	//recupero i valori che inserisce l'utente in un array
+	const insertNumberArray = [
+		document.getElementById("input-1").value,
+		document.getElementById("input-2").value,
+		document.getElementById("input-3").value,
+		document.getElementById("input-4").value,
+		document.getElementById("input-5").value,
+	];
+
+	console.log(insertNumberArray);
 	//controllo per ogni numero scritto dall'utente
-	inputsNumber.forEach((input, index) => {
+
+	insertNumberArray.forEach((input, index) => {
 		//se corrisponde
-		if (input.value === randomEl[index].toString()) {
+		if (parseInt(input) === randomEl[index]) {
 			//aggiungo al counter un elemento
 			countCorrect += 1;
 			//aggiungo all'array correctNumbers il numero random
@@ -79,14 +77,5 @@ confirmButton.addEventListener("click", () => {
 	const checkNumeri = document.getElementById("check-numeri");
 	checkNumeri.innerHTML = `Hai indovinato ${countCorrect} numeri: ${correctNumbers.join(
 		" , "
-	)}. `;
+	)} `;
 });
-/*
-console.log(
-	firstNumber.value,
-	secondNumber.value,
-	thirdNumber.value,
-	fourthNumber.value,
-	fifthNumber.value
-);
-*/
