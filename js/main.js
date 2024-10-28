@@ -1,17 +1,22 @@
-//prendo tutti gli id dei numeri dalll'html
+//prendo tutti gli id dei numeri dalll'html e l'id del bottone per la verifica
 const firstNumber = document.getElementById("first-number");
 const secondNumber = document.getElementById("second-number");
 const thirdNumber = document.getElementById("third-number");
 const fourthNumber = document.getElementById("fourth-number");
 const fifthNumber = document.getElementById("fifth-number");
+
 const confirmButton = document.getElementById("confirm-button");
 
 //creo i numeri random
-const firstRandomNumber = Math.floor(Math.random() * 100);
-const secondRandomNumber = Math.floor(Math.random() * 100);
-const thirdRandomNumber = Math.floor(Math.random() * 100);
-const fourthRandomNumber = Math.floor(Math.random() * 100);
-const fifthRandomNumber = Math.floor(Math.random() * 100);
+function generateRandomNumber(min, max) {
+	return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+const firstRandomNumber = generateRandomNumber(1, 99);
+const secondRandomNumber = generateRandomNumber(1, 99);
+const thirdRandomNumber = generateRandomNumber(1, 99);
+const fourthRandomNumber = generateRandomNumber(1, 99);
+const fifthRandomNumber = generateRandomNumber(1, 99);
 
 //li metto in un array
 const randomEl = [
